@@ -1,0 +1,256 @@
+.border{
+	border: 1px solid red;
+}
+
+.hide{
+	display: none !important;
+}
+
+.show{
+	display: block;
+}
+
+.setDayBox{
+	width: 250px;
+	height: 50px;
+	position: absolute;
+	top: 50px;
+	right: 30px;
+	border: 2px solid #39f;
+	overflow: hidden;
+}
+
+.setDayBox input[type=number]{
+	width: 150px;
+	height: 30px;
+	border: 1px solid #39f;
+	font-size: 25px;
+}
+
+.setDayBox input[type=button]{
+	height: 30px;
+	padding: 0;
+}
+
+.person{
+	border: 2px solid #39f;	
+	font-size: 25px;
+	font-weight: bolder;
+	text-align: right;
+}
+
+.person td{
+	padding: 10px;
+}
+
+.cover{
+	width: 100%;
+	height: 100%;
+	background: #888;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 100;
+	opacity: 0.9;
+	font-size: 40px;
+	font-weight: bolder;
+	line-height: 70px;
+	text-align: center;
+	color: #fff;
+	display: block;
+}
+
+.radius{
+	border-radius: 10px;
+}
+
+.dayBoxHead{
+	width: 100%;
+	height: 40px;
+	text-align: center;
+	font-size: 20px;
+	border-bottom: 2px solid green;
+}
+
+.dayBoxHead::after{
+	content: " ";
+	clear: both;
+	display: block;
+}
+
+.dayNumber{
+	float: left;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+.dayNumber span{
+	display: block;
+	font-size: 25px;
+	font-weight: bolder;
+}
+
+.dayButton{
+	float: right;
+	margin-right: 10px;
+	margin-top: 5px;
+	cursor: pointer;
+	display: block;
+}
+
+.restAllDay{
+	font-size: 20px;
+	font-weight: bolder;
+	background: #39f;
+	color: #fff;
+	border: 1px solid #39f;
+	height: 30px;
+	line-height: 30px;
+}
+
+.workAllDay{
+	font-size: 20px;
+	font-weight: bolder;
+	background: #063;
+	color: #fff;
+	border: 1px solid #096;
+	height: 30px;
+	line-height: 30px;
+}
+
+.dayBoxArray{
+	width: auto;
+	height: auto;
+}
+
+.dayBox{
+	width: auto;
+	height: auto;
+	border: 2px solid green;
+	display: inline-block;
+	margin: 10px;
+}
+
+.dayWorkBox{
+	width: 200px;
+	height: 70px;
+	border: 2px solid green;
+	position: relative;
+	margin: 5px 10px;
+	float: left;
+	overflow: hidden;
+}
+
+.dayBoxArray::after{
+	content: " ";
+	clear: both;
+	display: block;
+}
+
+.dayWorkBoxIn{
+	width: 100%;
+	height: 100%;
+}
+
+.dayWorkBoxIn::after{
+	content: " ";
+	clear: both;
+	display: block;
+}
+
+.inputBox{
+	width: 150px;
+	float: left;
+	position: relative;
+	top: 10px;
+	left:10px;
+}
+
+.inputBox input{
+	width: 150px;
+	height: 50px;
+	border: none;
+	font-size: 40px;
+}
+
+.sideButton{
+	float: right;
+	width: 30px;
+	height: 100%;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.changeButtonArray{
+	width: 60px;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	transition: left 0.3s;
+}
+
+.changeButtonArray::after{
+	content: " ";
+	clear: both;
+	display: block;
+}
+
+.changeButtonArray:hover{
+	left: -30px;
+}
+
+.button{
+	width: 30px;
+	height: 100%;
+	float: left;
+}
+
+.button span{
+	display: block;
+	font-size: 20px;
+	font-weight: bolder;
+	width: 20px;
+	margin: auto;
+	line-height: 35px;
+}
+
+.workButton{
+	background: #090;
+	color: #fff;
+}
+
+.noWorkButton{
+	background: #ccc;
+	color: #f00;
+}
+
+.floatBox{
+	float: left;
+}
+
+.btn-area{
+	margin: 20px 0 20px 20px;
+}
+
+.btn-area button{
+	width: 150px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 20px;
+}
+
+.input-area{
+	width: 900px;
+}
+
+.input-area input{
+	margin-top: 50px;
+	width: 200px;
+	height: 50px;
+	font-size: 40px;
+	border: 1px solid #000;
+}
+
+.input-area input:focus{
+	border: 1px solid orange;
+}
