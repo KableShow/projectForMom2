@@ -15,27 +15,35 @@
 	<h1>工资计算器</h1>
 	<table id="personal" class="person radius">
 		<tr>
-			<td>名字：</td>
+			<td>名字:</td>
 			<td>张三</td>
-			<td>工作天数：</td>
+			<td>工作天数:</td>
 			<td id="workDay" class=""></td>
 		</tr>
 		<tr>
-			<td>工资：</td>
-			<td id="realpay" ></td>
-			<td>休息天数：</td>
-			<td id="restDay" class=""></td>
+			<td>本月总天数:</td>
+			<td id="monthDay"></td>
+			<td>放假天数:</td>
+			<td id="holiday"></td>
 		</tr>
 		<tr>
-			<td>全勤奖：</td>
+			<td>工资:</td>
+			<td id="realpay" ></td>
+			<td>休息天数:</td>
+			<td id="restDay" class=""></td>
+		</tr>
+		<tr><td colspan="4"><hr></td></tr>
+		<tr>
+			<td>全勤奖:</td>
 			<td id="award" class=""></td>
-			<td>总工资：</td>
+			<td>总工资:</td>
 			<td id="salary" class=""></td>
 		</tr>
 	</table>
 	<div id="" class="setDayBox radius">
-		<span>请输入工作的天数(大于2小于32)</span>
-		<input type="number" id="setDay" />
+		<span>请输入计算月的天数(28/29/30/31)</span>
+		<input type="number" id="setDay" /><br>
+		<input type="checkbox" value="1" id="hasAward">是否有全勤奖?
 		<input type="button" value="确定" id="setDayBtn" />
 	</div>
 	<div class="btn-area">
@@ -115,50 +123,10 @@
 			<div id="" class="" style="clear: both;"></div>
 		</div>
 	</script>
-	<!--
-	<div id="" class="dayBox radius">
-		<div id="" class="dayBoxHead">
-			<div id="" class="dayNumber">
-				<span class="" id="" >1</span>
-			</div>
-			<div id="" class="restAllDay dayButton radius">
-				全天休息
-			</div>
-			<div id="" class="workAllDay dayButton radius hide">
-				全天工作
-			</div>
-			<div id="" class="dayButton deleteHalfDay">
-				<img src="img/delete.png" width="30" height="30" border="0" alt=""/>
-			</div>
-			<div id="" class="dayButton addHalfDay">
-				<img src="img/add.png" width="30" height="30" border="0" alt=""/>
-			</div>
+	<script type="text" id="holidayCoverModule">
+		<div class="holidayCover">
+			<span>放假</span>
 		</div>
-		<div id="" class="dayBoxArray">
-			<div id="" class="dayWorkBox radius">
-				<!-- 遮罩层 
-				<div id="" class="cover hide">
-					<span class="">休息</span>
-				</div>
-				<div id="" class="dayWorkBoxIn">
-					<div id="" class="inputBox">
-						<input type="number" name="" class="pay" />
-					</div>
-					<div id="" class="sideButton">
-						<div id="" class="changeButtonArray">
-							<div id="work" class="button workButton">
-								<span class="">工作</span>
-							</div>
-							<div id="nowork" class="button noWorkButton">
-								<span class="">休息</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div id="" class="" style="clear: both;"></div>
-	</div>
-	-->
+	</script>
  </body>
 </html>

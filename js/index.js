@@ -1,30 +1,38 @@
-function active(){
-	$('.addHalfDay').on('click',function () {
-		var Box = $(this).parents('.dayBox').find('.dayWorkBox');
-		var len = Box.length;
-		var that = $(this);
-		if(len < 3){
-			var boxarray = $(this).parents('.dayBox').find('.dayBoxArray');
-			var html = $('#halfDayBoxModule').html();
-			boxarray.append(html);
-			that.parents('.dayBox').find('.noWorkButton').on('click',function () {
-				var dom = $(this).parents('.dayWorkBox').find('.cover');
-				dom.removeClass('hide');
-				dom.on('click',function () {
-					$(this).addClass('hide');
-					$(this).siblings('.dayWorkBoxIn').find('.pay').removeAttr('disabled');
-				});
-				$(this).parents('.dayWorkBoxIn').find('.pay').attr('disabled','disabled');
+function workAllDay() {
+	$(this).addClass('hide');
+	$(this).siblings('.restAllDay').removeClass('hide');
+	$(this).parents('.dayBox').find('.cover').click();
+}
+function addHalfDay() {
+	var Box = $(this).parents('.dayBox').find('.dayWorkBox');
+	var len = Box.length;
+	var that = $(this);
+	if(len < 3){
+		var boxarray = $(this).parents('.dayBox').find('.dayBoxArray');
+		var html = $('#halfDayBoxModule').html();
+		boxarray.append(html);
+		that.parents('.dayBox').find('.noWorkButton').on('click',function () {
+			var dom = $(this).parents('.dayWorkBox').find('.cover');
+			dom.removeClass('hide');
+			dom.on('click',function () {
+				$(this).addClass('hide');
+				$(this).siblings('.dayWorkBoxIn').find('.pay').removeAttr('disabled');
 			});
-		}
-	});
+			$(this).parents('.dayWorkBoxIn').find('.pay').attr('disabled','disabled');
+		});
+	}
+}
 
-	$('.deleteHalfDay').on('click',function () {
-		var Box = $(this).parents('.dayBox').find('.dayWorkBox');
-		var len = Box.length;
-		if(len > 1)
-			Box.last().remove();
-	});
+function deleteHalfDay() {
+	var Box = $(this).parents('.dayBox').find('.dayWorkBox');
+	var len = Box.length;
+	if(len > 1)
+		Box.last().remove();
+}
+function active(){
+	$('.addHalfDay').on('click',addHalfDay);
+
+	$('.deleteHalfDay').on('click',deleteHalfDay);
 
 	$('.restAllDay').on('click',function () {
 		$(this).addClass('hide');
@@ -32,11 +40,7 @@ function active(){
 		$(this).parents('.dayBox').find('.noWorkButton').click();
 	});
 
-	$('.workAllDay').on('click',function () {
-		$(this).addClass('hide');
-		$(this).siblings('.restAllDay').removeClass('hide');
-		$(this).parents('.dayBox').find('.cover').click();
-	});
+	$('.workAllDay').on('click',workAllDay);
 
 	$('.noWorkButton').on('click',function () {
 		$(this).parents('.dayWorkBox').find('.cover').removeClass('hide');
@@ -47,18 +51,6 @@ function active(){
 		$(this).addClass('hide');
 		$(this).siblings('.dayWorkBoxIn').find('.pay').removeAttr('disabled');
 	});
-
-
-	/*
-	$('input[type=number]').on('keyup',function(){
-		var sum = 0,
-		    inputDom = $('input[type=number]');
-		$.each(inputDom,function(i,n){
-			sum += Number(inputDom[i].value);
-		});
-		$('.show-area span').html(sum.toFixed(2));
-	});
-	*/
 
 	$('#clean').click(function(){
 		var inputDom = $('.pay');
@@ -71,29 +63,38 @@ function active(){
 		var len = $('.dayBox').length;
 		var restDay = 0;
 		var realpay = 0;
-		/**  计算日工资总和  **/
+		var holiday = 0;
+		/**  录脝脣茫脠脮鹿陇脳脢脳脺潞脥  **/
 		var payDom = $('.pay').not($('input[disabled=disabled]'));
 		$.each(payDom,function (i,n) {
 			realpay += Number(payDom[i].value);
 		});
 		$('#realpay').html(realpay.toFixed(2));
-		/**  计算休息天数   **/
+		/**  录脝脣茫脨脻脧垄脤矛脢媒   **/
 		var dayBox = $('.dayBoxArray');
 		$.each(dayBox,function (i,n) {
-			var i,j;
+			var i,j,t;
+			t = dayBox.eq(i).find('.holidayCover').length;
 			j = dayBox.eq(i).find('.pay').length;
 			i = dayBox.eq(i).find('.pay').not($('input[disabled=disabled]')).length;
-			restDay += i == j?0:(i == 0)?1:0.5;
+			if(t == 0){
+				restDay += i == j?0:(i == 0)?1:0.5;
+			}else{
+				holiday++;
+			}
 		});
 		$('#restDay').html(restDay.toFixed(1));
-		/**  计算工作天数  **/
-		var day = Number($('#setDay')[0].value) - restDay.toFixed(1);
+		$('#holiday').text(holiday);
+		$('.holid')
+		/**  录脝脣茫鹿陇脳梅脤矛脢媒  **/
+		var day = Number($('#setDay')[0].value) - restDay.toFixed(1) - holiday;
 		$('#workDay').html(day);
-		/**  计算全勤奖  **/
+		/**  录脝脣茫脠芦脟脷陆卤  **/
 		len = 200 - 50*(Math.floor(restDay))<0?0:200 - 50*(Math.floor(restDay));
+		$('#hasAward:checked').length == 0?len = 0:void(0);
 		$('#award').html(len);
-		/**  计算总工资  **/
-		$('#salary').html(realpay+len);
+		/**  录脝脣茫脳脺鹿陇脳脢  **/
+		$('#salary').html((realpay+len).toFixed(2));
 	});
 	
 	$('#restAllMonth').on('click',function () {
@@ -102,6 +103,24 @@ function active(){
 
 	$('#workAllMonth').on('click',function () {
 		$('.workAllDay').click();
+	});
+
+	$('.dayNumber').on('click',function(){
+		var that = $(this);
+		var dom = that.parent().siblings('.dayBoxArray').find('.dayWorkBox');
+		if(dom.find('.holidayCover').length == 0){
+			var html = $('#holidayCoverModule').html();
+			that.siblings('.restAllDay').click();
+			that.siblings('.workAllDay').off('click',workAllDay);
+			that.siblings('.addHalfDay').off('click',addHalfDay);
+			that.siblings('.deleteHalfDay').off('click',deleteHalfDay);
+			dom.append(html);
+		}else{
+			dom.find('.holidayCover').remove();
+			that.siblings('.workAllDay').on('click',workAllDay);
+			that.siblings('.addHalfDay').on('click',addHalfDay);
+			that.siblings('.deleteHalfDay').on('click',deleteHalfDay);
+		}
 	});
 
 };
@@ -130,7 +149,8 @@ function sum() {
 $(function(){
 	$('#setDayBtn').on('click',function () {
 		var day = Number($('#setDay')[0].value);
-		$('#setDay,#setDayBtn').attr("disabled","disabled");
+		$('#setDay,#setDayBtn,#hasAward').attr("disabled","disabled");
+		$('#monthDay').text(day);
 		buildDayBox(day);
 		active();
 	});
