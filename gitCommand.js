@@ -16,11 +16,9 @@ if (!shell.which('git')) {
 //   shell.exit(1);
 // }
 
-// var str = shell.exec('git branch').toString()
-// str.
-console.log(shell.exec('git branch'))
+var str = shell.exec('git branch').toString()
 var reg = /\* (.+)\n/g
-var u = reg.exec(s)
+var u = reg.exec(str)
 var currentBranch = ''
 if (u && u.length >= 2) {
   currentBranch = u[1]
