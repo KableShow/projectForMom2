@@ -25,17 +25,17 @@ var currentBranch = ''
 if (u && u.length >= 2) {
   currentBranch = u[1]
 }
-if (shell.exec('git checkout master').code !== 0) {
-  errorMsg('Error: Git checkout master failed')
+if (shell.exec('git checkout test').code !== 0) {
+  errorMsg('Error: Git checkout test failed')
 }
-if (shell.exec('git pull origin master').code !== 0) {
-  errorMsg('Error: Git pull origin master failed')
+if (shell.exec('git pull origin test').code !== 0) {
+  errorMsg('Error: Git pull origin test failed')
 }
 if (shell.exec('git merge ' + currentBranch).code !== 0) {
   errorMsg('Error: Git merge ' + currentBranch + ' failed')
 }
-if (shell.exec('git push origin master').code !== 0) {
-  errorMsg('Error: Git push origin master failed')
+if (shell.exec('git push origin test').code !== 0) {
+  errorMsg('Error: Git push origin test failed')
 }
 if (shell.exec('git checkout ' + currentBranch).code !== 0) {
   errorMsg('Error: Git checkout ' + currentBranch + ' failed')
