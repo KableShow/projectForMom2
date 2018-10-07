@@ -1,0 +1,23 @@
+{
+  "name": "projectformom2",
+  "version": "1.0.0",
+  "description": "version 2 ##### 借github宝地存放工具脚本",
+  "main": "index.js",
+  "scripts": {
+    "git": "node ./gitCommand.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KableShow/projectForMom2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KableShow/projectForMom2/issues"
+  },
+  "homepage": "https://github.com/KableShow/projectForMom2#readme",
+  "devDependencies": {
+    "shelljs": "^0.8.2"
+  }
+}
